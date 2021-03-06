@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Created by jt on 6/19/20.
+ */
 @Slf4j
 public class RestHeaderAuthFilter extends AbstractAuthenticationProcessingFilter {
 
@@ -21,15 +24,14 @@ public class RestHeaderAuthFilter extends AbstractAuthenticationProcessingFilter
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        
-        String userName = getUserName(request);
+        String userName = getUsername(request);
         String password = getPassword(request);
 
-        if (userName == null) {
+        if (userName == null){
             userName = "";
         }
 
-        if (password == null) {
+        if (password == null){
             password = "";
         }
 
@@ -44,7 +46,7 @@ public class RestHeaderAuthFilter extends AbstractAuthenticationProcessingFilter
         return request.getHeader("Api-Secret");
     }
 
-    private String getUserName(HttpServletRequest request) {
+    private String getUsername(HttpServletRequest request) {
         return request.getHeader("Api-Key");
     }
 }
