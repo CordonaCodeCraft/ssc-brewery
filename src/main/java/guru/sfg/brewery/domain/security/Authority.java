@@ -8,13 +8,11 @@ import java.util.Set;
 /**
  * Created by jt on 6/21/20.
  */
-
-@Getter
 @Setter
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-
 @Entity
 public class Authority {
 
